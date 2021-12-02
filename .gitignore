@@ -17,3 +17,6 @@ pom.xml.asc
 # calva
 .calva
 .clj-kondo
+
+# vim
+*.swp
