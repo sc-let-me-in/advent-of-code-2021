@@ -10,7 +10,7 @@
 (defn readFile [filename]
   (map intParse (with-open [rdr (io/reader filename)](doall (line-seq rdr)))))
 
-;; calculate increases from list of numbers
+;; calculate increases from list of numbers (part 1)
 (defn increases [nums idx prev]
   (cond
     (or (not (coll? nums)) (empty? nums)) 0
@@ -20,4 +20,18 @@
     (increases (rest nums) (+ idx 1) (first nums))
   ))
 
-(println (increases (readFile (first *command-line-args*)) 0 0))
+;; number of sliding window increases (part 2)
+(defn slidingWindowIncreases [nums]
+  (let [newNum (nth nums 3 nil)]
+    (cond
+      (nil? newNum) 0
+      (> newNum (first nums)) (+ 1 (slidingWindowIncreases (rest nums)))
+      :else
+      (slidingWindowIncreases (rest nums)))))
+
+;; print solutions
+(let [nums (readFile (first *command-line-args*))]
+  (println (increases nums 0 0))
+
+  (println (slidingWindowIncreases nums)))
+
