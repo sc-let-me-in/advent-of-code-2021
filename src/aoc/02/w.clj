@@ -1,4 +1,5 @@
-(require '(clojure.string))
+(ns aoc.02.w
+  (:require [clojure.string]))
 
 (def input (clojure.string/split-lines (slurp *in*)))
 

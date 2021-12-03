@@ -1,4 +1,5 @@
-(require '(clojure.string))
+(ns aoc.01.w
+  (:require [clojure.string]))
 
 (def input (clojure.string/split-lines (slurp *in*)))
 (def input-nums (map (fn [n-string] (Integer/parseInt n-string)) input))
