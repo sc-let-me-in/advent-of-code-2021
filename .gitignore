@@ -20,6 +20,3 @@ pom.xml.asc
 
 # vim
 *.swp
-
-#input files
-*.txt
