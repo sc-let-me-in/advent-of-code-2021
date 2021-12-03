@@ -21,7 +21,7 @@
     (if (<= (count nums) window)
       acc
       (let [prev (reduce + (take window nums))
-            next (reduce +  (take window (drop 1 nums)))]
+            next (reduce + (take window (drop 1 nums)))]
         (recur (rest nums) (if (< prev next) (inc acc) acc))))))
 
 (def count-increases (partial count-increases-window 1))
