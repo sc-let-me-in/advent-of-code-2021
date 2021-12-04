@@ -1,5 +1,6 @@
 (ns aoc.02.nick
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (def example '((forward 5)
                (down 5)
@@ -8,7 +9,8 @@
                (down 8)
                (forward 2)))
 (def input
-  (-> "02/input/nick.txt"
+  (-> "aoc/02/nick.txt"
+      io/resource
       slurp
       str/split-lines
       ((partial map #(map read-string (str/split % #" "))))))

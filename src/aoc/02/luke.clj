@@ -1,4 +1,4 @@
-(ns shit.city.advent.luke
+(ns aoc.02.luke
   (:require [clojure.java.io :as io])
   (:require [clojure.string :as str]))
 
@@ -30,7 +30,7 @@
                 (fn [str]
                   (let [strCmd (str/split str #" ")]
                     [(first strCmd) (Integer/parseInt (second strCmd))]))
-                "/home/nluken/Documents/advent-of-code-2021/02/input.txt")
+                "aoc/02/luke.txt")
       simple-final-pos (calc-simple-final-pos commands 0 0)
       aimed-final-pos (calc-aimed-final-pos commands 0 0 0)]
 

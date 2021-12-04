@@ -1,4 +1,4 @@
-(ns shit.city.advent.luke
+(ns aoc.01.luke
   (:require
     [clojure.java.io :as io]))
 

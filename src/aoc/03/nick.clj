@@ -1,5 +1,6 @@
 (ns aoc.03.nick
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (defn split [nums] (mapv #(mapv read-string (str/split % #"")) nums))
 
@@ -16,7 +17,7 @@
            "11001"
            "00010"
            "01010")))
-(def input (-> "03/input/nick.txt" slurp str/split-lines split))
+(def input (-> "aoc/03/nick.txt" io/resource slurp str/split-lines split))
 
 ;; Part 1
 (defn transpose

@@ -1,8 +1,13 @@
 (ns aoc.01.nick
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (def example '(199 200 208 210 200 207 240 269 260 263))
-(def input (map read-string (str/split-lines (slurp "01/input/nick.txt"))))
+(def input (-> "aoc/01/nick.txt"
+               io/resource
+               slurp
+               str/split-lines
+               (#(map read-string %))))
 
 #_(defn count-increases
     "Counts the number of times a number is followed by a bigger number in a given list"
