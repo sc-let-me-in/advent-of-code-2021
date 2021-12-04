@@ -52,11 +52,10 @@
 (defn last-to-win [[nums boards]]
   (loop [[n & ns] nums
          boards boards]
-    (let [marked (map (partial mark n) boards)
-          remaining (filter (comp not bingo?) marked)]
-      (if (empty? remaining)
-        [n (first marked)]
-        (recur ns remaining)))))
+    (let [marked (map (partial mark n) boards)]
+      (if-let [remaining (seq (filter (comp not bingo?) marked))]
+        (recur ns remaining)
+        [n (first marked)]))))
 
 (comment (-> example last-to-win calc-score))
 (-> input last-to-win calc-score)
