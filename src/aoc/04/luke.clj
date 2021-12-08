@@ -85,7 +85,9 @@
                          (remove check-for-victory
                                  (map (fn [b] (mark-board b (first (:callouts state)))) (:boards state))))
              (first (:callouts state)))
-      (* (reduce + (get-unmarked-nums (first (:boards state)))) last))))
+      (let [next-board (mark-board (first (:boards state)) (first (:callouts state)))]
+        (if (check-for-victory (first (:boards state))) (* (reduce + (get-unmarked-nums (first (:boards state)))) last)
+            (recur (BingoGame. (rest (:callouts state)) (list next-board)) (first (:callouts state))))))))
 
 (comment 
   (losing-game-loop (ingest "aoc/04/example.txt"))
