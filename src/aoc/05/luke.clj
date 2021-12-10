@@ -13,11 +13,6 @@
                             str/split-lines
                             ((fn [l] (map parse-line l)))))
 
-(defn diagonal? [line]
-  (let [start (first line) finish (second line)]
-    (and (not= (first start) (first finish))
-         (not= (second start) (second finish)))))
-
 (defn make-line-strings [line]
   (let [start (first line) finish (second line)
         x0 (first start) y0 (second start)
@@ -37,4 +32,5 @@
       count))
 
 (count-overlapping-points (ingest "aoc/05/example.txt"))
+(count-overlapping-points (ingest "aoc/05/luke.txt"))
 
