@@ -13,7 +13,7 @@
        comma-split
        (map luke/parse-int)))
 
-;; Maybe the solution is the median?
+;; Maybe the solution is the median? (this worked for pt 1???)
 (defn pseudo-median [list]
   (let [sorted (sort list)]
     (nth sorted (quot (count sorted) 2))))
@@ -21,5 +21,11 @@
 (defn fuel-calc [list posn]
   (reduce + (map (fn [n] (Math/abs (- n posn))) list)))
 
+(defn actual-fuel-calc [list posn]
+  (reduce + (map (fn [n]
+                   (let [d (Math/abs (- n posn))]
+                     (reduce + (range d)))) list)))
+
+;; awful, exponential time garbage
 (let [l (ingest "luke.txt")]
-  (fuel-calc l (pseudo-median l)))
+  (reduce min (map (partial actual-fuel-calc l) l)))
