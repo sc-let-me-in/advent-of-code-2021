@@ -24,8 +24,8 @@
 (defn actual-fuel-calc [list posn]
   (reduce + (map (fn [n]
                    (let [d (Math/abs (- n posn))]
-                     (reduce + (range d)))) list)))
+                     (reduce + (range (+ 1 d))))) list)))
 
 ;; awful, exponential time garbage
-(let [l (ingest "luke.txt")]
-  (reduce min (map (partial actual-fuel-calc l) l)))
+(let [l (ingest "luke.txt") lmax (reduce max l)]
+  (reduce min (map (partial actual-fuel-calc l) (range lmax))))
